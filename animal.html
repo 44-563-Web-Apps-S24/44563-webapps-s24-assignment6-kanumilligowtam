@@ -23,6 +23,9 @@
          
          
         <p id="result">This text will be replaced </p>
+        <div>
+            <button type="button"><img src="after.png" alt="After dark" width="150" height="150" onclick="selectImage()" id="1stimg"></button>
+        </div>
          
         <script>
          
@@ -57,7 +60,29 @@
             //} else {
                 //out.innerHTML = "Values were not confirmed"
             //}
+
+        
         }
+        function selectImage()
+    {
+        switch (useImage) {
+            case 1:
+                document.getElementById("1stimg").src="after.png";
+                useImage=2;
+                break;
+            case 2:
+                document.getElementById("1stimg").src = "ice tea.jpg";
+                useImage=3;
+                break;
+            case 3:
+                 document.getElementById("1stimg").src = "kuntucky.jpg";   
+                 useImage=1;
+                break;
+        
+            default:
+                break;
+        }
+    }
         </script>
         
          
