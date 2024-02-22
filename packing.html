@@ -1,58 +1,61 @@
 <!DOCTYPE html>
 <html>
- <head>
-    <title>PACKING HTML</title>
- </head>
+
+<head>
+    <title>PACKING PAGE</title>
+</head>
+
 <body>
-<h1>Gowtam packs for a trip</h1>
-<form action="">
-    <label for="packlight">Pack Light</label>
-    <input type="checkbox" id="packlight" value="true">
-    <label for="Carryon">Carry on</label>
-    <input type="checkbox" id="carryon" value="true">
-    <label for="tablet">Tablet</label>
-    <input type="checkbox" id="tablet" value="false">
-    <input type="button" value="Select for Packing" onclick="selectpack()">
-</form>
+    <h1>Gowtam for a trip</h1>
+    <form>
+        <label for="light"><input type="checkbox" id="light" value="True">Pack Light </label><br>
+        <label for="carry"><input type="checkbox" id="carry" value="True">Carry On</label> <br>
+        <label for="tablet"><input type="checkbox" id="tablet" value="false">Tablet</label> <br>
+    </form>
+    <br>
+    <button onclick="selectPack()">Select for packing</button><br>
+    <p id="results"></p>
+
+    <script>
+        let my_pack = {};
+
+        function selectPack() {
 
 
-<p id="results">This text will be replaced </p>
-<form>
-    <label for="month">Enter travel month</label>
-    <input type ="text" id="month" name="month" value="May"> <br>
-
-    <label for="price">Enter price</label>
-    <input type ="text" id="price" name="price" value=""> <br>
-
-    <input type="button" onclick="updatePack()" value="Update the pack">
-</form>
+            let my_pack = {};
 
 
-<p id="result">This text will be replaced </p>
+            my_pack.light = document.getElementById("light").checked;
+            my_pack.carry = document.getElementById("carry").checked;
+            my_pack.tablet = document.getElementById("tablet").checked;
 
-<script> 
+            document.getElementById("results").textContent = JSON.stringify(my_pack);
 
-var my_pack={};
-function selectpack()
-{
-     my_pack={};
-    my_pack.packlight=document.getElementById("packlight").checked;
-    my_pack.carryon=document.getElementById("carryon").checked;
-    my_pack.tablet=document.getElementById("tablet").checked;
-    document.getElementById("results").textContent=JSON.stringify(my_pack);
-}
-function updatePack()
-{
-    my_pack={};
-    var month = document.getElementById("month").value;
-    var price = document.getElementById("price").value;
-    my_pack.month=document.getElementById("month").value;
-    my_pack.price=document.getElementById("price").value;
-    
-    document.getElementById("result").textContent=JSON.stringify(my_pack);
+        }   
+    </script>
 
-}
-</script>
+    <hr>
+    <form>
+        <input type="text" id="name" value="May">Initial Travel Month <br>
+        <input type="text" id="tripPrice">Enter Price <br>
+    </form>
+    <br>
+    <button type="button" onclick="updatePack()">Update the pack</button>
+    <script>
+        function updatePack() {
+            let month = document.getElementById("name").value;
+            let price = document.getElementById("tripPrice").value;
+
+            my_pack["name"] = month;
+            my_pack["tripPrice"] = price;
+
+            document.getElementById("results").innerHTML = JSON.stringify(my_pack);
+
+        }
+
+    </script>
+
 
 </body>
-</html> 
+
+</html>
